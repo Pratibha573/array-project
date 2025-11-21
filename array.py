@@ -1,24 +1,27 @@
 import sys
 
-if len(sys.argv) == 4:
-    english = int(sys.argv[1])
-    maths = int(sys.argv[2])
-    kannada = int(sys.argv[3])
+if len(sys.argv) > 1:
+    script_name = sys.argv[0]
+    scores = sys.argv[1:]
+
+    # Convert all arguments (strings) into float
+    scores = [float(x) for x in scores]
 else:
-    english = 50
-    maths = 75
-    kannada = 100
+    # Default values when no command-line input is given
+    scores = [50, 60, 70, 80, 90]
+    print("No input given, using default scores:", scores)
 
-scores = [english, maths, kannada]
+# Calculate total and average
+total = sum(scores)
+average = total / len(scores)
 
+print("Scores:", scores)
+print("Sum of Scores:", total)
+print("Average of Scores:", average)
 
-score = sum(scores)
-avg = score / 3
-maximum = max(scores)
+# Calculate minimum and maximum
 minimum = min(scores)
+maximum = max(scores)
 
-
-print("Total score:", score)
-print("Average:", avg)
-print("Maximum score:", maximum)
 print("Minimum score:", minimum)
+print("Maximum score:", maximum)
